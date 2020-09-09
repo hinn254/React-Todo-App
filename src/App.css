@@ -29,12 +29,13 @@ h1 {
   border-radius: 12px;
   flex: 1;
   text-align: center;
-  /* border:  */
+  transition: all 0.5s ease;
 }
 .btn:hover {
   background: red;
   color: #000;
   cursor: pointer;
+  transition: all 0.5s ease;
 }
 .item {
   color: grey;
@@ -81,11 +82,13 @@ button {
   border-radius: 12px;
   margin-left: 3px;
   margin-top: 6rem;
+  transition: all 0.5s ease;
 }
 button:hover,
 button:focus {
   outline: none;
   color: black;
+  transition: all 0.5s ease;
 }
 .item,
 .btn {
