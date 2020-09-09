@@ -1,24 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import Heading from "./components/Heading";
+import InputField from "./components/InputField";
+import TodoList from "./components/TodoList";
+import { without } from "lodash";
 
 function App() {
+  const [todoItem, setTodoItem] = useState([
+    "Going to the market to buy groceries",
+    "Learning to code especially react and express",
+    "Creating a todo list app with react ",
+  ]);
+
+  const handleTodo = (item) => {
+    console.log(`Received ${item}`);
+    if (item === "") {
+      return;
+    } else {
+      setTodoItem([...todoItem, item]);
+    }
+  };
+
+  const handleSelected = (selected) => {
+    const newData = without(todoItem, todoItem[selected]);
+    setTodoItem(newData);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Heading />
+      <InputField textValue={handleTodo} />
+      <TodoList todoItem={todoItem} isSelected={handleSelected} />
     </div>
   );
 }
